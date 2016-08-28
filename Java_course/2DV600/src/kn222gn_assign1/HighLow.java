@@ -1,18 +1,23 @@
 package kn222gn_assign1;
 
-import java.util.Random;
+//import java.util.Random;
 import java.util.Scanner;
 
 public class HighLow {
 	
 	public static void main(String[] args)
 	{
-		Random random = new Random();
+		//Random random = new Random();
 		
-		int min = 0;
-		int max = 100;
+		int minValue = 0;
+		int maxValue = 100;
 		
-		int randomNumber = random.nextInt(100)+1;
+		if (maxValue % 2 == 0) 
+			--maxValue;
+		if (minValue % 2 == 0) 
+			++minValue;
+		
+		int randomNumber = minValue + 2*(int)(Math.random()*((maxValue-minValue)/2+1));;
 		int numberOfTries = 0;
 		
 		Scanner inputNumber = new Scanner(System.in);
@@ -36,8 +41,9 @@ public class HighLow {
 			{
 				
 				try{
+					
 					guessByUser = inputNumber.nextInt();//Don't use this line outside of this if-statement!
-					if(guessByUser < min || guessByUser > max)
+					if(guessByUser < minValue || guessByUser > maxValue)
 					{
 						System.out.printf("Invalid guess only between 0 and 100!");
 						numberOfTries--;
