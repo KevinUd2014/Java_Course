@@ -9,6 +9,9 @@ public class HighLow {
 	{
 		Random random = new Random();
 		
+		int min = 0;
+		int max = 100;
+		
 		int randomNumber = random.nextInt(100)+1;
 		int numberOfTries = 0;
 		
@@ -19,46 +22,55 @@ public class HighLow {
 		boolean win = false;
 		boolean outOfGuesses = false;
 		
+		if(win == false && outOfGuesses == false && numberOfTries != 10){
+			System.out.println();
+			System.out.println("Guess a number between 1 and 100: ");
+			System.out.println();
+		}
+		
 		while(win == false && outOfGuesses == false)
 		{
-			if(win == false && outOfGuesses == false && numberOfTries != 10){
-				System.out.println();
-				System.out.println("Guess a number between 1 and 100: ");
-				System.out.println();
-			}
-			
 			numberOfTries++;
 			
 			if(numberOfTries <= 10)
 			{
-				guessByUser = inputNumber.nextInt();//Don't use this line outside of this if-statement!
 				
-				if(guessByUser == randomNumber)
-				{
-					win = true;
-					System.out.println();
-					System.out.printf("You made it mate! Congratulations mate! It only took %d attempts", numberOfTries);
-					inputNumber.close();
-					break;
+				try{
+					guessByUser = inputNumber.nextInt();//Don't use this line outside of this if-statement!
+					if(guessByUser < min || guessByUser > max)
+					{
+						System.out.printf("Invalid guess only between 0 and 100!");
+						numberOfTries--;
+					}
+					
+					if(guessByUser == randomNumber)
+					{
+						win = true;
+						System.out.println();
+						System.out.printf("You made it mate! Congratulations mate! It only took %d attempts", numberOfTries);
+						inputNumber.close();
+						break;
+					}
+					else if(guessByUser < randomNumber)
+					{
+						System.out.printf("Guess: %d", numberOfTries);
+						System.out.println();
+						System.out.printf("         Your guess of %d is low!", guessByUser);
+						System.out.println();
+					}
+					else if(guessByUser > randomNumber)
+					{
+						System.out.printf("Guess: %d ", numberOfTries);
+						System.out.println();
+						System.out.printf("         Your guess of %d is high!", guessByUser);
+						System.out.println();
+					}
 				}
-				if(guessByUser < 0 || guessByUser > 100)
-				{
-					System.out.printf("Invalid guess only between 0 and 100!");
-					numberOfTries--;
-				}
-				else if(guessByUser < randomNumber)
-				{
-					System.out.printf("Guess: %d", numberOfTries);
-					System.out.println();
-					System.out.printf("         Your guess of %d is low!", guessByUser);
-					System.out.println();
-				}
-				else if(guessByUser > randomNumber)
-				{
-					System.out.printf("Guess: %d ", numberOfTries);
-					System.out.println();
-					System.out.printf("         Your guess of %d is high!", guessByUser);
-					System.out.println();
+				catch(Exception e){
+					System.out.println("NaN  ");
+	                //gets the next input
+	                inputNumber.next();
+	                numberOfTries--;
 				}
 			}
 			else{
