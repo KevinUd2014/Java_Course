@@ -1,0 +1,62 @@
+package kn222gn_assign1;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class HighLow {
+	
+	public static void main(String[] args)
+	{
+		Random random = new Random();
+		
+		int randomNumber = random.nextInt(100);
+		int numberOfTries = 0;
+		
+		Scanner inputNumber = new Scanner(System.in);
+		
+		int guessByUser;
+		
+		boolean win = false;
+		boolean outOfGuesses = false;
+		
+		while(win == false && outOfGuesses == false)
+		{
+			if(win == false && outOfGuesses == false){
+				System.out.println();
+				System.out.println("Guess a number between 1 and 100: ");
+				System.out.println();
+			}
+			guessByUser = inputNumber.nextInt();
+			numberOfTries++;
+			
+			if(numberOfTries < 10)
+			{
+				if(guessByUser == randomNumber)
+				{
+					win = true;
+					System.out.println();
+					System.out.printf("You made it mate! Congratulations mate! It only took %d attempts", numberOfTries);
+				}
+				else if(guessByUser < randomNumber)
+				{
+					System.out.printf("Guess: %d", numberOfTries);
+					System.out.println();
+					System.out.println("         Your guess is low!");
+				}
+				else if(guessByUser > randomNumber)
+				{
+					System.out.printf("Guess: %d ", numberOfTries);
+					System.out.println();
+					System.out.println("         Your guess it high!");
+				}
+			}
+			else{
+				outOfGuesses = true;
+				System.out.println();
+				System.out.printf("Sorry you're out of guesses mate! The number was %d", randomNumber);
+			}
+			inputNumber.close();
+		}
+	}
+
+}

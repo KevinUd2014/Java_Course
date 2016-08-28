@@ -1,0 +1,29 @@
+package kn222gn_assign1;
+
+import java.util.Scanner;
+
+public class Backwards {
+
+	public static void main(String args[])
+	{
+		String originalText, reversedText = "";  //skapar variabler
+		
+		System.out.println("Write something: ");//skriver ut vad som förväntas av användaren
+		
+		Scanner inputText = new Scanner(System.in);//scannar efter input text
+		
+		originalText = inputText.nextLine();// sparar original texten
+		
+		//String answer = inputText.nextLine();
+		int length = originalText.length();//tar ut hur många bokstäver texten innehåller
+		
+		for(int i = length - 1 ; i >=0 ; i--)//för varje bokstav i texten så kör vi denna!
+		{
+			reversedText = reversedText + originalText.charAt(i);
+		}
+		
+		//new StringBuilder(answer).reverse().toString();
+		
+		System.out.println(reversedText);
+	}
+}

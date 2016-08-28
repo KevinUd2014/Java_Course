@@ -1,0 +1,37 @@
+package kn222gn_assign1;
+
+import java.util.Scanner;
+
+public class CountDigits {
+
+	public static void main(String [] args){
+		
+		int value;
+		int evenNumber = 0;
+		int oddNumber = 0;
+		int zeroNumber = 0;
+		
+		System.out.print("Enter a number: ");
+		
+		Scanner scanNumber = new Scanner(System.in);
+		value = scanNumber.nextInt();
+		
+		while(value > 0){
+			
+			if((value%10) == 0){
+				zeroNumber++;
+			}
+			else if(value%2==0){
+				evenNumber++;
+			}
+			else{
+				oddNumber++;
+			}
+			
+			value/=10;
+		}
+		System.out.println();
+		
+		System.out.printf("Even numbers: %d, Odd numbers: %d, Zeros: %d", evenNumber, oddNumber, zeroNumber);
+	}
+}
