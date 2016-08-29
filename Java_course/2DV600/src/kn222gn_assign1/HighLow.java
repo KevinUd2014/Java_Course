@@ -17,7 +17,9 @@ public class HighLow {
 		if (minValue % 2 == 0) 
 			++minValue;
 		
-		int randomNumber = minValue + 2*(int)(Math.random()*((maxValue-minValue)/2+1));;
+		//Creates a random number between 0 - 0,9999 and then multiply it with the maxValue-minValue(ex. 100-1=99)/2=49.5=~49x2+1 = 99 = odd number
+		int randomNumber = minValue + 2*(int)(Math.random()*((maxValue-minValue)/2+1));
+		//minValue=1+2
 		int numberOfTries = 0;
 		
 		Scanner inputNumber = new Scanner(System.in);

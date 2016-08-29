@@ -1,0 +1,70 @@
+package kn222gn_assign1;
+
+import java.util.Scanner;
+
+public class Diamond {
+
+	public static void main (String args[]){
+		
+		Scanner scanner = new Scanner(System.in);
+		
+		int inputNumber;
+		
+		//inputNumber = scanner.nextInt();
+		
+		try{
+			
+			inputNumber = scanner.nextInt();
+			if(inputNumber < 0 || inputNumber > 20)
+			{
+				System.out.printf("Invalid program is set to numbers between 0 and 20!");
+			}
+			else{
+				printDiamond(inputNumber);
+			}
+		}
+		catch(Exception e){
+			System.out.println("Not a Number");
+            //gets the next input
+			scanner.next();
+		}
+		
+		//printDiamond(inputNumber);
+		
+		
+	}
+	
+	public static void printDiamond(int inputNumber){
+		
+		int firstDot = 1;
+		int multiDots = 2;
+		
+		for(int i = firstDot; i < inputNumber; i += multiDots)
+		{
+			for(int j = 0; j < inputNumber -i/2; j += 1){
+				
+				System.out.print(" ");
+			}
+			for(int j = 0; j < i; j++){
+				
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+		for(int i = inputNumber; i > 0; i -= multiDots)
+		{
+			for(int j = 0; j < inputNumber -i/2; j += 1){
+				
+				System.out.print(" ");
+			}
+			for(int j = 0; j < i; j++){
+				
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+		
+		
+		
+	}
+}
